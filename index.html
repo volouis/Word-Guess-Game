@@ -32,7 +32,7 @@
 
         w = 0;
         l = 0;
-        gl = 9;
+        gl = 10;
         list = [];
 
         var text = "";
@@ -41,20 +41,22 @@
         text = rand.charAt(Math.floor(Math.random() * rand.length));
 
         document.onkeydown = function(event){
-            if(event.key === text){
-                w =  w + 1;
-                text = rand.charAt(Math.floor(Math.random() * rand.length));
-                gl = 9;
-                list = [];
-            }else if(event.key !== text){
-                if(gl > 0){
-                    gl = gl - 1;
-                    list.push(event.key);
-                }else{
-                    l = l + 1;
-                    gl = 9;
-                    list = [];
+            if(event.key.length === 1 && event.key !== " "){
+                if(event.key === text){
+                    w =  w + 1;
                     text = rand.charAt(Math.floor(Math.random() * rand.length));
+                    gl = 10;
+                    list = [];
+                }else if(event.key !== text){
+                    if(gl > 1){
+                        gl = gl - 1;
+                        list.push(event.key);
+                    }else{
+                        l = l + 1;
+                        gl = 10;
+                        list = [];
+                        text = rand.charAt(Math.floor(Math.random() * rand.length));
+                    }
                 }
             }
 
