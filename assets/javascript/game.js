@@ -1,40 +1,112 @@
-var win = document.getElementById("win");
-var lost = document.getElementById("lost");
+var win = document.getElementById("wins");
 var left = document.getElementById("left");
 var guess = document.getElementById("guess");
+var rapper = document.getElementById("rapper");
+
+var list = [
+    "DRAKE",
+    "LILWAYNE",
+    "JAYZ",
+    "JCOLE",
+    "KENDRICKLAMAR",
+    "MIGOS",
+    "EMINEM",
+    "KANYEWEST",
+    "50CENT",
+    "FUTURE",
+    "CARDIB",
+    "NWA"
+];
 
 var w = 0;
-var l = 0;
-var gl = 10;
-var list = [];
+var g = 12;
+var wg = [];
 
-var text = "";
-var rand = "abcdefghijklmnopqrstuvwxyz";
+var ran = Math.floor((Math.random() * list.length));
+var word = list[ran];
+var rapName = [];
+var wordLeft = [];
 
-text = rand.charAt(Math.floor(Math.random() * rand.length));
+for(var i = 0; i < word.length; i++){
+    rapName.push(word.charAt(i));
+    wordLeft.push("_");
+}
 
-document.onkeydown = function(event){
-    if(event.key.length === 1 && event.key !== " "){
-        if(event.key === text){
-            w =  w + 1;
-            text = rand.charAt(Math.floor(Math.random() * rand.length));
-            gl = 10;
-            list = [];
-        }else if(event.key !== text){
-            if(gl > 1){
-                gl = gl - 1;
-                list.push(event.key);
-            }else{
-                l = l + 1;
-                gl = 10;
-                list = [];
-                text = rand.charAt(Math.floor(Math.random() * rand.length));
+left.textContent = g
+win.textContent = w;
+rapper.textContent = wordLeft;
+
+document.onkeydown = function(event) {
+
+    var letter = event.key.toUpperCase();
+
+    var a = wg.indexOf(event.key);
+    console.log(a);
+    if(a === -1){
+        wg.push(event.key);
+        g--;
+
+        if(word.includes(letter)){
+            var times = occurence(rapName, letter);
+            ind = rapName.indexOf(letter);
+            wordLeft[ind] = letter;
+
+            if(times > 1){
+                for(var i = 1; i < times; i++){
+                    ind = rapName.indexOf(letter, (ind + 1));
+                    wordLeft[ind] = letter;
+                }
+            }
+
+            //win condition
+            if(!(wordLeft.includes("_"))){
+                w++;
+                g = 12;
+                wg = [];
+
+                ran = Math.floor((Math.random() * list.length));
+                word = list[ran];
+
+                rapName = [];
+                wordLeft = [];
+
+                for(var i = 0; i < word.length; i++){
+                    rapName.push(word.charAt(i));
+                    wordLeft.push("_");
+                }
+            }
+        }
+        // runs out of guess
+        if(g === 0){
+            g = 12;
+            wg = [];
+
+            ran = Math.floor((Math.random() * list.length));
+            word = list[ran];
+
+            rapName = [];
+            wordLeft = [];
+
+            for(var i = 0; i < word.length; i++){
+                rapName.push(word.charAt(i));
+                wordLeft.push("_");
             }
         }
     }
 
     win.textContent = w;
-    lost.textContent = l;
-    left.textContent = gl;
-    guess.textContent = list;
+    rapper.textContent = wordLeft;
+    left.textContent = g;
+    guess.textContent = wg;
+}
+
+
+function occurence(name, l){
+    var count = 0;
+    for(var i = 0; i < name.length; i++){
+        if(name[i] === l){
+            count++;
+        }
+    }
+    return count;
 }
