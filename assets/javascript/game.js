@@ -3,10 +3,10 @@ var lost = document.getElementById("lost");
 var left = document.getElementById("left");
 var guess = document.getElementById("guess");
 
-w = 0;
-l = 0;
-gl = 10;
-list = [];
+var w = 0;
+var l = 0;
+var gl = 10;
+var list = [];
 
 var text = "";
 var rand = "abcdefghijklmnopqrstuvwxyz";
