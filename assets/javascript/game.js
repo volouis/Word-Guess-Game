@@ -19,10 +19,6 @@ var list = [
     "RICHBRIAN"
 ];
 
-
-
-
-
 var w = 0;
 var g = 12;
 var wg = [];
@@ -34,7 +30,7 @@ console.log(hellopic)
 var rapName = [];
 var wordLeft = [];
 
-var x = document.createElement("IMG");
+var x = document.getElementById("profile-pic");
 x.setAttribute("src", hellopic);
 document.body.appendChild(x);
 
@@ -77,9 +73,13 @@ document.onkeydown = function(event) {
 
                 ran = Math.floor((Math.random() * list.length));
                 word = list[ran];
+                hellopic = "assets/images/" + word + ".jpg";
 
                 rapName = [];
                 wordLeft = [];
+                
+                x.setAttribute("src", hellopic);
+                document.body.appendChild(x);
 
                 for(var i = 0; i < word.length; i++){
                     rapName.push(word.charAt(i));
@@ -94,9 +94,13 @@ document.onkeydown = function(event) {
 
             ran = Math.floor((Math.random() * list.length));
             word = list[ran];
+            hellopic = "assets/images/" + word + ".jpg";
 
             rapName = [];
             wordLeft = [];
+            
+            x.setAttribute("src", hellopic);
+            document.body.appendChild(x);
 
             for(var i = 0; i < word.length; i++){
                 rapName.push(word.charAt(i));

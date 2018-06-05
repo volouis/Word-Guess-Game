@@ -1,0 +1,57 @@
+body{
+    background-color: #898952;
+}
+
+#heading{
+    background-color: #93C48B;
+}
+
+h1, h2{
+    margin: auto;
+    text-align: center;
+    width: 800px;
+    color: #D0E562;
+}
+
+h1{
+    font-size: 100px;
+    margin-bottom: 20px;
+    font-family: 'Pacifico', cursive;
+}
+
+h2{
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+#gamelayout{
+    margin: auto;
+    width: 700px;
+
+}
+
+#profile-pic{
+    float: right;
+    margin: 20px;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    overflow: auto;
+}
+
+p{
+    width: 400px;
+    color: #B6D369;
+    font-family: 'Varela Round', sans-serif;
+}
+
+#gamelayout #rigthside{
+    overflow: auto;
+    float: right;
+    width: 400px;
+    border: solid #D0E562;
+    padding: 10px;
+}
