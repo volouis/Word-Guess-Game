@@ -15,8 +15,13 @@ var list = [
     "50CENT",
     "FUTURE",
     "CARDIB",
-    "NWA"
+    "NWA",
+    "RICHBRIAN"
 ];
+
+
+
+
 
 var w = 0;
 var g = 12;
@@ -24,8 +29,14 @@ var wg = [];
 
 var ran = Math.floor((Math.random() * list.length));
 var word = list[ran];
+var hellopic = "assets/images/" + word + ".jpg";
+console.log(hellopic)
 var rapName = [];
 var wordLeft = [];
+
+var x = document.createElement("IMG");
+x.setAttribute("src", hellopic);
+document.body.appendChild(x);
 
 for(var i = 0; i < word.length; i++){
     rapName.push(word.charAt(i));
@@ -99,7 +110,6 @@ document.onkeydown = function(event) {
     left.textContent = g;
     guess.textContent = wg;
 }
-
 
 function occurence(name, l){
     var count = 0;
