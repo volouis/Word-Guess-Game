@@ -5,17 +5,13 @@ var rapper = document.getElementById("rapper");
 
 var list = [
     "DRAKE",
-    "LILWAYNE",
-    "JAYZ",
     "JCOLE",
     "KENDRICKLAMAR",
     "MIGOS",
     "EMINEM",
     "KANYEWEST",
-    "50CENT",
     "FUTURE",
     "CARDIB",
-    "NWA",
     "RICHBRIAN"
 ];
 
@@ -26,13 +22,17 @@ var wg = [];
 var ran = Math.floor((Math.random() * list.length));
 var word = list[ran];
 var hellopic = "assets/images/" + word + ".jpg";
-console.log(hellopic)
+var hellomusic = "assets/music/" + word + ".mp3";
+
 var rapName = [];
 var wordLeft = [];
 
 var x = document.getElementById("profile-pic");
+var y = document.getElementById("musicplayer");
+var z = document.getElementById("music");
+
 x.setAttribute("src", hellopic);
-document.body.appendChild(x);
+z.setAttribute("src", hellomusic);
 
 for(var i = 0; i < word.length; i++){
     rapName.push(word.charAt(i));
@@ -46,6 +46,7 @@ rapper.textContent = wordLeft;
 document.onkeydown = function(event) {
 
     var letter = event.key.toUpperCase();
+    var word1 = word;
 
     var a = wg.indexOf(event.key);
     console.log(a);
@@ -67,6 +68,11 @@ document.onkeydown = function(event) {
 
             //win condition
             if(!(wordLeft.includes("_"))){
+                y.load();
+                y.play();
+
+                console.log(hellomusic);
+
                 w++;
                 g = 12;
                 wg = [];
@@ -74,12 +80,13 @@ document.onkeydown = function(event) {
                 ran = Math.floor((Math.random() * list.length));
                 word = list[ran];
                 hellopic = "assets/images/" + word + ".jpg";
+                hellomusic = "assets/music/" + word1 + ".mp3";
 
                 rapName = [];
                 wordLeft = [];
                 
                 x.setAttribute("src", hellopic);
-                document.body.appendChild(x);
+                z.setAttribute("src", hellomusic);
 
                 for(var i = 0; i < word.length; i++){
                     rapName.push(word.charAt(i));
@@ -95,12 +102,13 @@ document.onkeydown = function(event) {
             ran = Math.floor((Math.random() * list.length));
             word = list[ran];
             hellopic = "assets/images/" + word + ".jpg";
+            hellomusic = "assets/music/" + word1 + ".mp3";
 
             rapName = [];
             wordLeft = [];
             
             x.setAttribute("src", hellopic);
-            document.body.appendChild(x);
+            z.setAttribute("src", hellomusic);
 
             for(var i = 0; i < word.length; i++){
                 rapName.push(word.charAt(i));
